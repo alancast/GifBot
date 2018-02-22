@@ -1,3 +1,9 @@
+# About GifBot
+
+GifBot is a bot that will provide you a gif at random from the string that you pass it. It can be connected to a variety of things, but the primary (and most tested) use case is in Microsoft Teams. It uses the Giphy API as the source of it's GIFs.
+
+# Azure boilerplate how to use
+
 ## Use Azure app service editor
 
 1. make code change in the online editor
