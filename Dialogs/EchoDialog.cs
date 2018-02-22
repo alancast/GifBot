@@ -68,8 +68,8 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             // Create and send the reply message
             var replyMessage = context.MakeMessage();
             replyMessage.Text = "random GIF for \"" + text + "\" as requested by " + message.From.Name + "\n" + link;
-            //Attachment attachment = GetInternetAttachment(link);
-            //replyMessage.Attachments = new List<Attachment> { attachment };
+            Attachment attachment = GetInternetAttachment(link);
+            replyMessage.Attachments = new List<Attachment> { attachment };
             await context.PostAsync(replyMessage);
             context.Wait(MessageReceivedAsync);
         }
@@ -79,7 +79,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             return new Attachment
             {
                 Name = "YourGif",
-                ContentType = "gif",
+                ContentType = "image/gif",
                 ContentUrl = url
             };
         }
