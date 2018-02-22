@@ -67,7 +67,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             
             // Create and send the reply message
             var replyMessage = context.MakeMessage();
-            replyMessage.Text = "random GIF for \"" + text + "\" as requested by " + message.From.Name + "\n" + link;
+            replyMessage.Text = "random GIF for \"" + text + "\" as requested by " + message.From.Name + " (testing continuous deployment)\n" + link;
             //Attachment attachment = GetInternetAttachment(link);
             //replyMessage.Attachments = new List<Attachment> { attachment };
             await context.PostAsync(replyMessage);
