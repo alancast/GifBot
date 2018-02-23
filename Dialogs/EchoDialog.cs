@@ -63,11 +63,13 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             Random rnd = new Random();
             JavaScriptSerializer json = new JavaScriptSerializer();
             var JSONObj = json.Deserialize<GiphyJson>(html);
-            string link = JSONObj.data[rnd.Next(1, 10)].images["original"].url;
+            string link = JSONObj.data.Take(10).OrderBy(x => rnd.Next()).FirstOrDefault()?.images?["original"]?.url;
             
             // Create and send the reply message
             var replyMessage = context.MakeMessage();
-            replyMessage.Text = "random GIF for \"" + text + "\" as requested by " + message.From.Name + "\n" + link;
+            replyMessage.Text = String.IsNullOrEmpty(link)
+                ? "no GIFs were found for \"" + text + "\""
+                : "random GIF for \"" + text + "\" as requested by " + message.From.Name + "\n" + link;
             // TODO:#7
             // Attachment attachment = GetInternetAttachment(link);
             // replyMessage.Attachments = new List<Attachment> { attachment };
