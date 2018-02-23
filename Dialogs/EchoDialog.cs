@@ -47,7 +47,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
             // Get html response for gif query
             string html = string.Empty;
-            string url = @"https://api.giphy.com/v1/gifs/search?api_key=" + Environment.GetEnvironmentVariable("GiphyApiKey") + "&limit=9&rating=g&q=" + text;
+            string url = @"https://api.giphy.com/v1/gifs/search?api_key=" + Environment.GetEnvironmentVariable("GiphyApiKey") + "&limit=9&rating=g&q=" + Uri.EscapeDataString(text);
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip;
