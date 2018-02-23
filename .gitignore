@@ -1,1 +1,7 @@
 project.lock.json
+.vs
+*.user
+bin/
+obj/
+local.settings.json
+Properties
