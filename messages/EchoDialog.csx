@@ -44,10 +44,9 @@ public class EchoDialog : IDialog<object>
         string text = message.Text;
         text = text.Replace("<at>GifBot</at>", "");
         text = text.Trim();
-        
+
         // Query GIPHY for the URL of the GIF to respond with
-        httpClient.BaseAddress = new Uri("https://api.giphy.com/v1/gifs/");
-        HttpResponseMessage response = await httpClient.GetAsync("search?api_key=" + Environment.GetEnvironmentVariable("GiphyApiKey") + "&limit=9&rating=g&q=" + Uri.EscapeDataString(text));
+        HttpResponseMessage response = await httpClient.GetAsync("https://api.giphy.com/v1/gifs/search?api_key=" + Environment.GetEnvironmentVariable("GiphyApiKey") + "&limit=9&rating=g&q=" + Uri.EscapeDataString(text));
         var json = await response.Content.ReadAsStringAsync();
 
         // Select a random GIF URL from the first 9
