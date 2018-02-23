@@ -1,9 +1,1 @@
-obj/
-bin/
-packages/
-*.pubxml.user
-*.csproj.user
-.vs/
-
-publish.cmd
-build.cmd
+project.lock.json
