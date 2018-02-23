@@ -1,5 +1,5 @@
 #r "Newtonsoft.Json"
-#load "EchoDialog.csx"
+#load "GifBot.csx"
 
 using System;
 using System.Net;
@@ -34,7 +34,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
             switch (activity.GetActivityType())
             {
                 case ActivityTypes.Message:
-                    await Conversation.SendAsync(activity, () => new EchoDialog());
+                    await Conversation.SendAsync(activity, () => new GifBot());
                     break;
                 case ActivityTypes.ConversationUpdate:
                 case ActivityTypes.ContactRelationUpdate:

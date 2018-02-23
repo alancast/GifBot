@@ -15,7 +15,7 @@ using Newtonsoft.Json.Linq;
 
 
 [Serializable]
-public class EchoDialog : IDialog<object>
+public class GifBot : IDialog<object>
 {
     private static readonly HttpClient httpClient = new HttpClient();
 
@@ -40,7 +40,7 @@ public class EchoDialog : IDialog<object>
     public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
     {
         var message = await argument;
-        
+
         string text = message.Text;
         text = text.Replace("<at>GifBot</at>", "");
         text = text.Trim();
@@ -66,13 +66,13 @@ public class EchoDialog : IDialog<object>
         context.Wait(MessageReceivedAsync);
     }
 
-    private static Attachment GetInternetAttachment(string url)	
-    {	
-        return new Attachment	
-        {	
-            Name = "YourGif",	
-            ContentType = "image/gif",	
-            ContentUrl = url	
-        };	
+    private static Attachment GetInternetAttachment(string url)
+    {
+        return new Attachment
+        {
+            Name = "YourGif",
+            ContentType = "image/gif",
+            ContentUrl = url
+        };
     }
 }

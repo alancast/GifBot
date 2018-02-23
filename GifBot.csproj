@@ -20,7 +20,7 @@
     <None Update="host.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="messages/EchoDialog.csx">
+    <None Update="messages/GifBot.csx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="messages/function.json">
