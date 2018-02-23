@@ -10,17 +10,6 @@ using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
-// Bot Storage: Register the optional private state storage for your bot. 
-
-// (Default) For Azure Table Storage, set the following environment variables in your bot app:
-// -UseTableStorageForConversationState set to 'true'
-// -AzureWebJobsStorage set to your table connection string
-
-// For CosmosDb, set the following environment variables in your bot app:
-// -UseCosmosDbForConversationState set to 'true'
-// -CosmosDbEndpoint set to your cosmos db endpoint
-// -CosmosDbKey set to your cosmos db key
-
 public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 {
     log.Info($"Webhook was triggered!");
@@ -48,30 +37,11 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
                     await Conversation.SendAsync(activity, () => new EchoDialog());
                     break;
                 case ActivityTypes.ConversationUpdate:
-                    // var client = new ConnectorClient(new Uri(activity.ServiceUrl));
-                    // IConversationUpdateActivity update = activity;
-                    // if (update.MembersAdded.Any())
-                    // {
-                    //     var reply = activity.CreateReply();
-                    //     var newMembers = update.MembersAdded?.Where(t => t.Id != activity.Recipient.Id);
-                    //     foreach (var newMember in newMembers)
-                    //     {
-                    //         reply.Text = "Welcome";
-                    //         if (!string.IsNullOrEmpty(newMember.Name))
-                    //         {
-                    //             reply.Text += $" {newMember.Name}";
-                    //         }
-                    //         reply.Text += "!";
-                    //         await client.Conversations.ReplyToActivityAsync(reply);
-                    //     }
-                    // }
-                    // break;
                 case ActivityTypes.ContactRelationUpdate:
                 case ActivityTypes.Typing:
                 case ActivityTypes.DeleteUserData:
                 case ActivityTypes.Ping:
                 default:
-                    log.Error($"Unknown activity type ignored: {activity.GetActivityType()}");
                     break;
             }
         }
