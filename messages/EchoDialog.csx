@@ -52,7 +52,7 @@ public class EchoDialog : IDialog<object>
         // Select a random GIF URL from the first 9
         Random rnd = new Random();
         JObject o = JObject.Parse(json);
-        string link = o.SelectToken("data").Take(9).Select(z => (string)z["images"]["original"]["url"]).OrderBy(x => rnd.Next()).FirstOrDefault();
+        string link = o.SelectToken("data").Select(z => (string)z["images"]["original"]["url"]).OrderBy(x => rnd.Next()).FirstOrDefault();
 
         // Create and send the reply message
         var replyMessage = context.MakeMessage();
