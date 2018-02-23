@@ -86,4 +86,14 @@ public class EchoDialog : IDialog<object>
         await context.PostAsync(replyMessage);
         context.Wait(MessageReceivedAsync);
     }
+
+    private static Attachment GetInternetAttachment(string url)	
+    {	
+        return new Attachment	
+        {	
+            Name = "YourGif",	
+            ContentType = "image/gif",	
+            ContentUrl = url	
+        };	
+    }
 }
