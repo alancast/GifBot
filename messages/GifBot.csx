@@ -57,22 +57,10 @@ public class GifBot : IDialog<object>
         // Create and send the reply message
         var replyMessage = context.MakeMessage();
         replyMessage.Text = String.IsNullOrEmpty(link)
-            ? "no GIFs were found for \"" + text + "\""
-            : "random GIF for \"" + text + "\" as requested by " + message.From.Name + "\n" + link;
-        // TODO:#7
-        // Attachment attachment = GetInternetAttachment(link);
-        // replyMessage.Attachments = new List<Attachment> { attachment };
+            ? $"no GIFs were found for \"{text}\""
+            : $"random GIF for \"{text}\" as requested by {message.From.Name}<br /><img src=\"{link}\"></img>";
+        replyMessage.TextFormat = "xml";
         await context.PostAsync(replyMessage);
         context.Wait(MessageReceivedAsync);
-    }
-
-    private static Attachment GetInternetAttachment(string url)
-    {
-        return new Attachment
-        {
-            Name = "YourGif",
-            ContentType = "image/gif",
-            ContentUrl = url
-        };
     }
 }
